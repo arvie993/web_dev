@@ -1,0 +1,14 @@
+<article class="post-full">
+  <header>
+    <h1><%= post.title %></h1>
+    <time class="muted" datetime="<%= post.createdAt.toISOString() %>">Published <%= post.createdAt.toLocaleString() %></time>
+  </header>
+  <div class="content"><%- post.content.replace(/\n/g,'<br>') %></div>
+  <div class="post-actions flex row gap-sm">
+    <a class="btn secondary" href="/">← Back</a>
+    <a class="btn" href="/posts/<%= post.slug %>/edit">Edit</a>
+    <form action="/posts/<%= post.slug %>/delete" method="POST" onsubmit="return confirm('Delete this post?');">
+      <button class="btn danger" type="submit">Delete</button>
+    </form>
+  </div>
+</article>

@@ -1,0 +1,16 @@
+<!-- edit.ejs -->
+<h1>Edit Post</h1>
+<form class="card" action="/posts/<%= post.slug %>/edit" method="POST">
+  <div class="field">
+    <label for="title">Title</label>
+    <input id="title" name="title" type="text" required maxlength="120" value="<%= post.title %>" />
+  </div>
+  <div class="field">
+    <label for="content">Content</label>
+    <textarea id="content" name="content" rows="12" required><%= post.content %></textarea>
+  </div>
+  <div class="flex row gap-sm">
+    <button class="btn" type="submit">Save Changes</button>
+    <a class="btn secondary" href="/posts/<%= post.slug %>">Cancel</a>
+  </div>
+</form>

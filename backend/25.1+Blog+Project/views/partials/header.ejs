@@ -1,0 +1,13 @@
+<header class="site-header">
+  <div class="container flex row center-between gap-md">
+    <a class="brand" href="/">📝 Blog</a>
+    <nav>
+      <ul class="nav-list flex row gap-sm">
+        <li><a href="/" class="<%= title === 'Home' ? 'active' : '' %>">Home</a></li>
+        <li><a href="/compose" class="<%= title === 'Compose' ? 'active' : '' %>">Compose</a></li>
+        <li><a href="/about" class="<%= title === 'About' ? 'active' : '' %>">About</a></li>
+        <li><a href="/contact" class="<%= title === 'Contact' ? 'active' : '' %>">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Name Letters</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+
+<body>
+  <main class="card">
+    <% if (error) { %>
+      <p class="error"><%= error %></p>
+    <% } %>
+    <% if (totalLetters !== null && totalLetters !== undefined) { %>
+      <h2 class="result">There are <%= totalLetters %> letters in your name</h2>
+    <% } else { %>
+      <h2>Enter your first and last name</h2>
+    <% } %>
+    <form action="/submit" method="POST" autocomplete="off">
+      <input type="text" name="fName" placeholder="First name" required>
+      <input type="text" name="lName" placeholder="Last name" required>
+      <input type="submit" value="Calculate">
+    </form>
+    <footer>
+      <p>Name Letter Counter Demo</p>
+    </footer>
+    <% if (totalLetters !== null && totalLetters !== undefined) { %>
+      <script>
+        // Prevent form re-submission on refresh and revert to default message
+        window.history.replaceState({}, '', '/');
+      </script>
+    <% } %>
+  </main>
+</body>
+
+</html>

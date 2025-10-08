@@ -1,0 +1,182 @@
+:root {
+  --primary-color: #121c4d; /* deep indigo */
+  --accent-color: #5c6bf2; /* periwinkle */
+  --accent-color-2: #ff8a5c; /* warm accent for gradients */
+  --background-color: #f7f7f5;
+  --card-background: #ffffff;
+  --text-color: #2b2b2b;
+  --muted-text: #585f6f;
+  --font-family: "Poppins", sans-serif;
+  --card-shadow: 0 6px 18px -4px rgba(20, 31, 54, 0.12), 0 2px 8px -2px rgba(20, 31, 54, 0.06);
+  --border-radius: 18px;
+  --gradient-brand: linear-gradient(90deg, var(--accent-color) 0%, var(--primary-color) 45%, var(--accent-color-2) 100%);
+  --focus-ring: 0 0 0 3px rgba(92,107,242,0.35);
+  --max-content-width: 1280px;
+}
+
+body {
+  font-family: var(--font-family);
+  margin: 0;
+  background: var(--background-color);
+  color: var(--text-color);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+.main {
+  flex: 1;
+  width: 100%;
+  max-width: var(--max-content-width);
+  margin: 0 auto;
+  padding: clamp(2rem, 5vw, 5rem) clamp(1.5rem, 4vw, 4rem) 4rem;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.header h1 {
+  font-size: 5rem;
+  font-weight: 900;
+  margin: 0;
+}
+
+.page-title {
+  font-size: clamp(2.2rem, 4vw + 1rem, 4.2rem);
+  line-height: 1.1;
+  font-weight: 700;
+  letter-spacing: -1px;
+  margin: 1rem 0 clamp(2rem, 6vh, 4rem);
+  max-width: 18ch;
+}
+
+.creative {
+  background: var(--gradient-brand);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  white-space: nowrap;
+}
+
+.brand {
+  font-size: clamp(2.2rem, 2.6vw + 1rem, 3.2rem);
+  font-weight: 700;
+  line-height: 1;
+  background: var(--gradient-brand);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  display: inline-block;
+  margin-bottom: 0.75rem;
+  font-variant-ligatures: contextual;
+  letter-spacing: 0.5px;
+}
+
+.cards {
+  --min-card-width: 330px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(var(--min-card-width), 1fr));
+  gap: clamp(1.5rem, 2vw, 2.5rem);
+  align-items: stretch;
+}
+
+.card {
+  background: var(--card-background);
+  padding: clamp(1rem, 1.2vw + 0.5rem, 1.75rem);
+  border-radius: var(--border-radius);
+  box-shadow: var(--card-shadow);
+  display: flex;
+  flex-direction: row;
+  gap: clamp(1.25rem, 2vw, 2rem);
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  transition: transform .55s cubic-bezier(.16,.84,.44,1), box-shadow .4s ease;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 15% 20%, rgba(92,107,242,0.15), transparent 60%),
+              radial-gradient(circle at 85% 80%, rgba(255,138,92,0.18), transparent 65%);
+  opacity: 0;
+  transition: opacity .6s ease;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 34px -6px rgba(17,29,56,0.18), 0 8px 14px -4px rgba(17,29,56,0.12);
+}
+
+.card:hover::before {opacity:1;}
+
+.tile-image {
+  width: clamp(140px, 22vw, 200px);
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: calc(var(--border-radius) - 4px);
+  flex-shrink: 0;
+  box-shadow: 0 4px 10px -2px rgba(0,0,0,0.15);
+  transition: transform .55s cubic-bezier(.16,.84,.44,1);
+  z-index: 1;
+}
+
+.card:hover .tile-image {transform: scale(1.04);}
+
+.card-body {z-index:1;}
+
+.card-title {
+  margin: 0 0 .4rem;
+  font-weight: 600;
+  letter-spacing: .5px;
+  color: var(--primary-color);
+  font-size: clamp(1.2rem, 0.9vw + 1rem, 1.6rem);
+}
+
+.card-text, .card p {
+  margin: 0;
+  line-height: 1.55;
+  font-size: clamp(.9rem, .55vw + .7rem, 1rem);
+  color: var(--muted-text);
+}
+
+.card-content h2 {
+  margin-top: 0;
+  color: var(--primary-color);
+}
+
+footer {
+  text-align: center;
+  padding: 2rem 1rem 3rem;
+  font-size: .85rem;
+  color: var(--primary-color);
+  letter-spacing: .5px;
+}
+
+/* Focus styles for a11y if cards become links later */
+.card:focus-within, .card:focus {
+  outline: none;
+  box-shadow: var(--focus-ring), var(--card-shadow);
+}
+
+@media (max-width: 900px) {
+  .card {flex-direction: column; text-align: center;}
+  .tile-image {width: clamp(180px, 60%, 260px);}
+  .page-title {max-width: none;}
+  .brand {font-size: clamp(2rem, 6vw, 3rem);}
+}
+
+@media (max-width: 560px) {
+  .main {padding: 2.2rem 1.2rem 3.5rem;}
+  .page-title {font-size: clamp(1.9rem, 7.5vw, 3rem);}
+  .cards {--min-card-width: 100%;}
+  .card {padding: 1.25rem 1.1rem 1.6rem;}
+  .tile-image {width: 100%; aspect-ratio: 16/10;}
+  .card-title {font-size: 1.35rem;}
+}

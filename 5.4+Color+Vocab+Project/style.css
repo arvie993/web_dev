@@ -1,0 +1,38 @@
+/* Color definitions */
+#red {
+    color: red;
+}
+
+#blue {
+    color: blue;
+}
+
+#orange {
+    color: orange;
+}
+
+#green {
+    color: green;
+}
+
+#yellow {
+    color: yellow;
+}
+
+
+/* 
+ * Applies to h2 elements with the "color-title" class.
+ * Sets the font weight to normal for a streamlined, non-bold title appearance.
+ */ 
+h2[class ="color-title"] {
+    font-weight: normal;
+}
+
+/* 
+ * Style rules for images:
+ * Sets a uniform height and width for all <img> elements.
+ */
+img{
+    height: 200px;
+    width: 200px;
+}

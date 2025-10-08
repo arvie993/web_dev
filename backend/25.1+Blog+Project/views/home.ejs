@@ -1,0 +1,27 @@
+<!-- home.ejs -->
+<section class="hero">
+  <h1>Welcome to the In-Memory Blog</h1>
+  <p>Create quick posts that live until the server restarts. Great for prototyping ideas!</p>
+  <a class="btn" href="/compose">Write a Post</a>
+</section>
+
+<section class="posts-grid">
+  <% if (!posts.length) { %>
+    <p class="muted">No posts yet. Be the first to <a href="/compose">write one</a>.</p>
+  <% } %>
+  <% posts.forEach(p => { %>
+    <article class="post-card">
+      <h2><a href="/posts/<%= p.slug %>"><%= p.title %></a></h2>
+      <p><%= preview(p.content) %></p>
+      <div class="meta flex row center-between">
+        <time datetime="<%= p.createdAt.toISOString() %>"><%= p.createdAt.toLocaleString() %></time>
+        <div class="flex row gap-sm">
+          <a class="link-button" href="/posts/<%= p.slug %>/edit">Edit</a>
+          <form action="/posts/<%= p.slug %>/delete" method="POST" onsubmit="return confirm('Delete this post?');">
+            <button class="link-button danger" type="submit">Delete</button>
+          </form>
+        </div>
+      </div>
+    </article>
+  <% }) %>
+</section>
