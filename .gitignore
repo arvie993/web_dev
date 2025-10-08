@@ -1,0 +1,61 @@
+# Node / frontend tooling
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# Dependency directories sometimes nested
+**/node_modules/
+
+# Logs
+logs/
+*.log
+
+# OS / Editor junk
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+.vscode/
+.idea/
+*.code-workspace
+
+# Build output / coverage
+/dist/
+/build/
+/out/
+coverage/
+.temp/
+.tmp/
+
+# Environment variables / secrets
+.env
+.env.*
+!.env.example
+
+# Cache
+.cache/
+.next/
+.nuxt/
+.svelte-kit/
+parcel-cache/
+webpack-cache/
+.eslintcache
+.stylelintcache
+.tsbuildinfo
+
+# Misc backups
+*.bak
+*.orig
+
+# Python (if any backend scripts)
+__pycache__/
+*.pyc
+
+# Images generated / processed (keep originals only if needed)
+*.orig.png
+*.orig.jpg
+
+# OneDrive specific temporary files
+~$*
